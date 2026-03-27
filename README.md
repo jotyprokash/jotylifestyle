@@ -13,7 +13,7 @@
 
 ---
 
-**RedThread** is a high-performance e-commerce engine developed as a capstone project for **CS-470**. It represents a sophisticated blend of modern lifestyle aesthetics and robust backend engineering. Built with Laravel 8, RedThread provides a seamless, secure, and visually stunning journey from product discovery to final checkout.
+**RedThread** is a shopping platform developed as a capstone project for **CSE-470**. It represents a sophisticated blend of modern lifestyle aesthetics and robust backend engineering. Built with Laravel 8, RedThread provides a seamless, secure, and visually stunning journey from product discovery to final checkout.
 
 ## Core Pillars
 
@@ -35,10 +35,5 @@ RedThread leverages a modern stack to ensure scalability and performance:
 
 To get RedThread running on your local machine for development or evaluation, please refer to the technical setup guide:
 
-👉 **[Local Setup Guide](setup/guide.md)**
+ **[Local Setup Guide](setup/guide.md)**
 
-### 🧣 From the Classroom to the Cloud
-
-A tribute to the caffeine-fueled nights of **CSE-470**, where every line of code in this project was a step toward who I am today. It’s the "Red Thread" connecting my academic roots to my professional future—a snapshot of a journey that continues to grow.
-
-*Built with heart during my university days.*
