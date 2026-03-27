@@ -1,306 +1,65 @@
 @extends('layouts.app')
-@foreach(\App\Settings::all()->where('id', '1') as $als)
-@section('title', $als->title)
-@endforeach
-@section('content') 
-<div class="section promo">
-  <div class="container">
-    <div class="col s12">
-      <div class="main-slider" data-indicators="true">
-		<div class="carousel carousel-slider " data-indicators="true">
-			@foreach($allsettings as $als)
-		   <a class="carousel-item"><img src="/img/{{$als->cover1}}" alt="slider"></a>
-		   <a class="carousel-item"><img src="/img/{{$als->cover2}}" alt="slider"></a>
-		   <a class="carousel-item"><img src="/img/{{$als->cover3}}" alt="slider"></a>
-		  @endforeach
-		</div>
-	  </div>
+
+@section('title', 'Signature Collection')
+
+@section('content')
+
+<!-- Hero Collection Section -->
+<section class="hero-collection">
+    <div class="container">
+        <h1>The RedThread Signature</h1>
+        <p>A tribute to the art of craftsmanship and the persistence of the university journey. Every piece is a testament to growth, quality, and the pursuit of excellence.</p>
+        <a href="#collection" class="btn btn-large waves-effect waves-light">Explore Collection</a>
     </div>
-  </div>
+</section>
+
+<div id="collection" class="container" style="padding-top: 50px;">
+    
+    <!-- Premium Featured Products -->
+    <div class="row">
+        <div class="col s12">
+            <h2 class="center-align" style="margin-bottom: 40px;">Featured Essentials</h2>
+        </div>
+        
+        @foreach($allpopularproducts->take(3) as $product)
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image">
+                    <a href="{{ route('product.show', $product->id) }}">
+                        <img src="{{ asset('/productpic/'.$product->picture) }}" alt="{{ $product->title }}">
+                    </a>
+                </div>
+                <div class="card-content center-align">
+                    <div class="p-title">{{ $product->title }}</div>
+                    <div class="p-price">৳ {{ number_format($product->sellingprice) }}</div>
+                    <div style="margin-top: 15px;">
+                        <a href="{{ route('product.show', $product->id) }}" class="btn-flat waves-effect" style="color: var(--rt-accent); font-weight: 600;">View Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid var(--rt-grey-light); margin: 60px 0;">
+
+    <!-- Categories / Collections Breakdown -->
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card" style="background-color: var(--rt-grey-light); padding: 40px;">
+                <h3 style="margin-top: 0;">Heritage Collection</h3>
+                <p>Traditional silhouettes reimagined with a modern edge. Our Heritage Panjabis are the perfect blend of ancestral roots and contemporary style.</p>
+                <a href="{{ route('search', ['query' => 'Panjabi']) }}" class="btn-flat" style="border-bottom: 1px solid var(--rt-black); padding: 0;">Shop Panjabis</a>
+            </div>
+        </div>
+        <div class="col s12 m6">
+            <div class="card" style="background-color: var(--rt-black); color: var(--rt-white); padding: 40px;">
+                <h3 style="color: var(--rt-white); margin-top: 0;">Modern Essentials</h3>
+                <p style="color: #ccc;">Elevated basics for the discerning eye. From 100% Egyptian cotton tees to tailored chinos, we define the modern uniform.</p>
+                <a href="{{ route('search', ['query' => 'T-Shirt']) }}" class="btn-flat" style="color: var(--rt-white); border-bottom: 1px solid var(--rt-white); padding: 0;">Shop Basics</a>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-@if($allcampaigns->count() > 0)
-  <div class="section product-item">
-    <div class="container">
-      <div class="row row-title">
-        <div class="col s12">
-          <div class="section-title">
-            <span class="theme-secondary-color">Campaign</span> Products
-          </div>
-        </div>
-      </div>
-      <div class="row row-no-margin">
-        @foreach($allcampaigns as $alc)
-        <div>
-          <div class="col s6 m4 l3 col-produc">
-            <div class="box-product">
-              <div class="bp-top">
-                <div class="product-list-img">
-                  <div class="pli-one">
-                    <div class="pli-two">
-                      <img src="/productpic/{{ $alc->picture }}" alt="Product Image">
-                    </div>
-                  </div>
-                </div>
-                <h5><a href="/product/{{ $alc->id }}">{{ $alc->title }}</a></h5>
-                <div class="price"><s>৳ {{ $alc->sellingprice}}</s></div>
-                <div class="price">৳ {{ $alc->campaignprice}}</div>
-                  @if( $alc->totalquantity > 0)
-                  <div class="stock-item" style="color:green">Available</div>
-                  @else
-                  <div class="stock-item" style="color:red">Not Available</div>
-                  @endif
-              </div>
-                  @if( $alc->totalquantity > 0)
-                  <div class="bp-bottom">
-                  <a href="/product/{{ $alc->id }}" class="btn button-add-cart">VIEW</a>
-                  </div>
-                  @else
-                  <div class="bp-bottom">
-                  <a href="/product/{{ $alc->id }}" class="btn button-add-cart">VIEW</a>
-                  </div>
-                  @endif
-            </div>
-          </div>
-        </div>
-        @endforeach
-      </div>
-    </div>
-  </div>
-  @else
-  @endif
-
-  @if($allpopularproducts->count() > 0)
-  <div class="section product-item">
-    <div class="container">
-      <div class="row row-title">
-        <div class="col s12">
-          <div class="section-title">
-            <span class="theme-secondary-color">POPULAR</span> PRODUCTS
-          </div>
-        </div>
-      </div>
-      <div class="row row-no-margin">
-        @foreach($allpopularproducts as $alpp)
-        <div>
-          <div class="col s6 m4 l3 col-produc">
-            <div class="box-product">
-              <div class="bp-top">
-                <div class="product-list-img">
-                  <div class="pli-one">
-                    <div class="pli-two">
-                      <img src="/productpic/{{ $alpp->picture }}" alt="Product Image">
-                    </div>
-                  </div>
-                </div>
-                <h5><a href="/product/{{ $alpp->id }}">{{ $alpp->title }}</a></h5>
-                <div class="price">৳ {{ $alpp->sellingprice}}</div>
-                  @if( $alpp->totalquantity > 0)
-                  <div class="stock-item" style="color:green">Available</div>
-                  @else
-                  <div class="stock-item" style="color:red">Not Available</div>
-                  @endif
-              </div>
-                  @if( $alpp->totalquantity > 0)
-                  <div class="bp-bottom">
-                  <a href="/product/{{ $alpp->id }}" class="btn button-add-cart">VIEW</a>
-                  </div>
-                  @else
-                  <div class="bp-bottom">
-                  <a href="/product/{{ $alpp->id }}" class="btn button-add-cart">VIEW</a>
-                  </div>
-                  @endif
-            </div>
-          </div>
-        </div>
-        @endforeach
-      </div>
-      @if($allpopularproducts->count() > 12)
-      <div class="more-product-list">
-          <a class="more-btn" href="/popular">See More ></a>
-      </div>
-      @else
-      @endif
-    </div>
-  </div>
-  @else
-  @endif
-
-
-
-
-  @if($alltshirts->count() > 0)
-  <div class="section product-item">
-    <div class="container">
-      <div class="row row-title">
-        <div class="col s12">
-          <div class="section-title">
-            <span class="theme-secondary-color">T-Shirt</span> Collection
-          </div>
-        </div>
-      </div>
-      <div class="row row-no-margin">
-        @foreach($alltshirts as $alts)
-        <div>
-          <div class="col s6 m4 l3 col-produc">
-            <div class="box-product">
-              <div class="bp-top">
-                <div class="product-list-img">
-                  <div class="pli-one">
-                    <div class="pli-two">
-                      <img src="/productpic/{{ $alts->picture }}" alt="Product Image">
-                    </div>
-                  </div>
-                </div>
-                <h5><a href="/product/{{ $alts->id }}">{{ $alts->title }}</a></h5>
-                <div class="price">৳ {{ $alts->sellingprice}}</div>
-                  @if( $alts->totalquantity > 0)
-                  <div class="stock-item" style="color:green">Available</div>
-                  @else
-                  <div class="stock-item" style="color:red">Not Available</div>
-                  @endif
-              </div>
-                  @if( $alts->totalquantity > 0)
-                  <div class="bp-bottom">
-                  <a href="/product/{{ $alts->id }}" class="btn button-add-cart">VIEW</a>
-                  </div>
-                  @else
-                  <div class="bp-bottom">
-                  <a href="/product/{{ $alts->id }}" class="btn button-add-cart">VIEW</a>
-                  </div>
-                  @endif
-            </div>
-          </div>
-        </div>
-        @endforeach
-      </div>
-    </div>
-  </div>
-  @else
-  @endif
-
-
-
-  @if($allpanjabis->count() > 0)
-  <div class="section product-item">
-    <div class="container">
-      <div class="row row-title">
-        <div class="col s12">
-          <div class="section-title">
-            <span class="theme-secondary-color">Panjabi</span> Collection
-          </div>
-        </div>
-      </div>
-      <div class="row row-no-margin">
-        @foreach($allpanjabis as $alp)
-        <div>
-          <div class="col s6 m4 l3 col-produc">
-            <div class="box-product">
-              <div class="bp-top">
-                <div class="product-list-img">
-                  <div class="pli-one">
-                    <div class="pli-two">
-                      <img src="/productpic/{{ $alp->picture }}" alt="Product Image">
-                    </div>
-                  </div>
-                </div>
-                <h5><a href="/product/{{ $alp->id }}">{{ $alp->title }}</a></h5>
-                <div class="price">৳ {{ $alp->sellingprice}}</div>
-                  @if( $alp->totalquantity > 0)
-                  <div class="stock-item" style="color:green">Available</div>
-                  @else
-                  <div class="stock-item" style="color:red">Not Available</div>
-                  @endif
-              </div>
-                  @if( $alp->totalquantity > 0)
-                  <div class="bp-bottom">
-                  <a href="/product/{{ $alp->id }}" class="btn button-add-cart">VIEW</a>
-                  </div>
-                  @else
-                  <div class="bp-bottom">
-                  <a href="/product/{{ $alp->id }}" class="btn button-add-cart">VIEW</a>
-                  </div>
-                  @endif
-            </div>
-          </div>
-        </div>
-        @endforeach
-      </div>
-    </div>
-  </div>
-  @else
-  @endif
-
-
-
-  @if($allpants->count() > 0)
-  <div class="section product-item">
-    <div class="container">
-      <div class="row row-title">
-        <div class="col s12">
-          <div class="section-title">
-            <span class="theme-secondary-color">Pant</span> Collection
-          </div>
-        </div>
-      </div>
-      <div class="row row-no-margin">
-        @foreach($allpants as $alp)
-        <div>
-          <div class="col s6 m4 l3 col-produc">
-            <div class="box-product">
-              <div class="bp-top">
-                <div class="product-list-img">
-                  <div class="pli-one">
-                    <div class="pli-two">
-                      <img src="/productpic/{{ $alp->picture }}" alt="Product Image">
-                    </div>
-                  </div>
-                </div>
-                <h5><a href="/product/{{ $alp->id }}">{{ $alp->title }}</a></h5>
-                <div class="price">৳ {{ $alp->sellingprice}}</div>
-                  @if( $alp->totalquantity > 0)
-                  <div class="stock-item" style="color:green">Available</div>
-                  @else
-                  <div class="stock-item" style="color:red">Not Available</div>
-                  @endif
-              </div>
-                  @if( $alp->totalquantity > 0)
-                  <div class="bp-bottom">
-                  <a href="/product/{{ $alp->id }}" class="btn button-add-cart">VIEW</a>
-                  </div>
-                  @else
-                  <div class="bp-bottom">
-                  <a href="/product/{{ $alp->id }}" class="btn button-add-cart">VIEW</a>
-                  </div>
-                  @endif
-            </div>
-          </div>
-        </div>
-        @endforeach
-      </div>
-    </div>
-  </div>
-  @else
-  @endif
-
-
-  <div class="qty-total-price">
-    <div class="container">
-      <div class="row">
-        <div class="col s5">
-          <div class="qty-prc"><i class="fa fa-phone"></i> Help Line <br><p>24 Hours a Day, 7 Days a Week</p></div>
-        </div>
-        <div class="col s4">
-          <div class="qty-prc"><i class="fa fa-truck"></i> Service<br><p>All Bangladesh</p></div>
-        </div>
-        <div class="col s3">
-          <div class="qty-prc"><i class="fa fa-thumbs-up"></i> Satisfaction<br><p>100% Satisfaction Guaranteed</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 
 @endsection
