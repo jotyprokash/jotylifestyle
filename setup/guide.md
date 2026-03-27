@@ -1,6 +1,6 @@
-# Setup Guide
+# Setup Guide: RedThread
 
-This guide will help you get JotyLifestyle running on your local machine.
+This guide will help you get RedThread running on your local machine.
 
 ## Prerequisites
 - **PHP**: 8.1 or higher
