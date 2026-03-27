@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>@yield('title') | JOTYLIFESTYLE.COM</title>
+<title>@yield('title') | RedThread.com</title>
 <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,8 +14,11 @@
 <link rel="stylesheet" href="{{ asset('/css/materialize.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/normalize.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/redthread.css') }}">
 <!-- materialize icon -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <!-- Owl carousel -->
 <link rel="stylesheet" href="{{ asset('/lib/owlcarousel/assets/owl.carousel.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/lib/owlcarousel/assets/owl.theme.default.min.css') }}">
@@ -37,7 +40,7 @@
 <header id="header">
 <div class="nav-wrapper container">
   <div class="header-logo">
-    <a href="/" class="nav-logo">JotyLifestyle</a>
+    <a href="/" class="nav-logo">RedThread</a>
   </div>
 
   @guest
@@ -98,7 +101,7 @@
 
           @guest
 
-          <li class="sidenav-logo">JotyLifestyle
+          <li class="sidenav-logo">RedThread
           </li>
 
           <li>
@@ -370,8 +373,11 @@
       </div>
     </div>
   </div>
-  <div class="row copyright">
-     2022 <span>JOTY Lifestyle</span>, All rights reserved.
+  <div class="row center-align" style="margin-top: 50px; color: var(--rt-grey-dark); font-size: 0.9rem;">
+      <p><i>"A tribute to the caffeine-fueled nights of my university years, where every line of code in this project was a step toward who I am today. (CSE-470)"</i></p>
+  </div>
+  <div class="row copyright center-align">
+     &copy; {{ date('Y') }} <span>RedThread</span>. All rights reserved.
   </div>
 </div>
 </footer>
