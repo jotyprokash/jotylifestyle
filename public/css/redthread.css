@@ -1,0 +1,96 @@
+/* RedThread Premium Design System */
+:root {
+    --rt-black: #000000;
+    --rt-white: #ffffff;
+    --rt-grey-dark: #333333;
+    --rt-grey-light: #f5f5f5;
+    --rt-accent: #8b0000; /* Signature "Red Thread" color */
+    --rt-font-heading: 'Playfair Display', serif;
+    --rt-font-body: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: var(--rt-font-body);
+    color: var(--rt-black);
+    background-color: var(--rt-white);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--rt-font-heading);
+    color: var(--rt-black);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Header Overrides */
+header#header {
+    background-color: var(--rt-white);
+    border-bottom: 1px solid var(--rt-grey-light);
+    box-shadow: none !important;
+}
+
+.nav-logo {
+    font-family: var(--rt-font-heading);
+    font-size: 1.8rem !important;
+    font-weight: 700;
+    color: var(--rt-accent) !important;
+    letter-spacing: -1px;
+    text-transform: none;
+}
+
+/* Materialize Component Refinements */
+.card {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: 1px solid var(--rt-grey-light);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: var(--rt-black);
+}
+
+.btn, .btn-large {
+    background-color: var(--rt-black) !important;
+    border-radius: 0 !important;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: none !important;
+}
+
+.btn:hover {
+    background-color: var(--rt-accent) !important;
+}
+
+/* Product Titles */
+.p-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.p-price {
+    color: var(--rt-grey-dark);
+    font-size: 1rem;
+}
+
+/* Hero Section */
+.hero-collection {
+    padding: 100px 0;
+    text-align: center;
+    background-color: var(--rt-grey-light);
+}
+
+.hero-collection h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-collection p {
+    font-size: 1.2rem;
+    color: var(--rt-grey-dark);
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
